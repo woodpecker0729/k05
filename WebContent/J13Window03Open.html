@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function findZipcode(){
+            window.open("./pages/zipcode.html","Zip","width=400, height=400, left=500, top=100,location=no, toolbar=no, menubar=no, scrollbars=yes,resizable=no");
+        }
+        function setZipcode(zip,addr){
+            opener.document.getElementById("zipcode").value = zip;
+            opener.document.getElementById("addr1").value = addr;
+            opener.document.getElementById("addr2").focus();
+            self.close();
+        }
+        function zipClose(){
+            alert("창을 닫습니다.");
+            self.close();
+        }
+        var winObj1;
+        function popFirst(){
+            winObj1 = window.open("./pages/popup01.html","pop1","width=300,height=300,left=0,top=0");
+        }
+        function popClose(){
+            alert("팝업창1을 닫습니다.");
+            winObj1.close();
+        }
+        function screenCenterPop(){
+            var s_width = window.screen.width;
+            var s_height = window.screen.height;
+            alert("모니터해상도>가로:"+s_width+", 세로:"+s_height);
+            var leftVar = s_width/2 - 300/2;
+            var topVar = s_height/2 - 300/2;
+            window.open("./pages/popup01.html","popup","width=300,height=300,left="+leftVar+",top="+topVar);
+        }
+        
+
+    </script>
+</head>
+<body>
+    <h2>팝업창 제어하기</h2>
+    <h3>여기는 부모창임</h3>
+    <fieldset>
+        <legend>우편번호 검색하기
+            <table>
+                <tr>
+                    <td>우편번호</td>
+                    <td>
+                        <input type="text" id="zipcode" size="5">
+                        <button onclick="findZipcode();">우편번호찾기</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>기본주소
+                    </td>
+                    <td><input type="text" name="" id="addr1" size="30"></td>
+                </tr>
+                <tr>
+                    <td>상세주소</td>
+                    <td><input type="text" name="" id="addr2" size="40"></td>
+                </tr>
+            </table>
+        </legend>
+    </fieldset>
+    <h2>우편번호 검색하기</h2>
+    <table border="1" width=100%>
+        <colgroup>
+         <col width="20%">
+         <col width="*">\
+        </colgroup>
+        <tr>
+            <th>우편번호</th>
+            <th>주소</th>
+        </tr>
+        <tr><td>11111</td></tr>
+        <td>
+            <a href="javascript:setZipcode('11111','서울)"> 서울</a>
+        </td>
+        <tr><td>22222</td></tr>
+        <td>
+            <a href="javascript:setZipcode('22222','인천')"> 인천</a>
+        </td>
+        <tr><td>33333</td></tr>
+        <td>
+            <a href="javascript:setZipcode('33333','광주')"> 광주</a>
+        </td>
+        <tr><td>44444</td></tr>
+        <td>
+            <a href="javascript:setZipcode('44444','부산')"> 부산</a>
+        </td>
+        <tr><td>55555</td></tr>
+        <td>
+            <a href="javascript:setZipcode('55555','서울시 종로구')"> 서울시 종로구</a>
+        </td>
+    </table>
+    <p style="text-align: center;"><button onclick="zipClose();">우편번호검색창닫기</button></p>
+    <h2>부모창에서 팝업창 제어하기</h2>
+    <p style="text-align:center;">
+        <button onclick="popFirst();">첫번째 팝업창 열기 </button>
+        <button onclick="popClose();">첫번째 팝업창 닫기 </button>
+    </p>
+    <h2>화면의 해상도 얻어와서 스크린 중간에 팝업띄우기</h2>
+    <p style="text-align:center;">
+        <button onclick="screenCenterPop()">
+        화면중간에 팝업띄우기</button>
+    </p>
+
+    <h2>팝업의 팝업창에서 부모창 제어하기</h2>
+    <p style="text-align:center;">
+        <input type="button" id="btnFirst" onclick="openChild1()" value="첫번쨰팝업창열기">
+    </p>
+</body>
+</html>

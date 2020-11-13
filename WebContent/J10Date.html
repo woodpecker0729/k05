@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        document.write("<h2>JS의 Core객체 - Date </h2>");
+
+        var date = new Date();
+        document.write("저장된값:"+date+"<br>");
+        document.write("연도 변환:"+(date.getYear())+"<br>");
+        document.write("월 변환:"+(date.getMonth())+"<br>");
+        document.write(
+            (date.getYear()+1900)+"년 "+
+            (date.getMonth()+1)+"월 "+
+            date.getDate()+"일 "+
+            date.getHours()+"시 "+
+            date.getMinutes()+"분 "+
+            date.getSeconds()+"초<br>");
+        date.setMonth(11);
+        date.setDate(25);
+        date.setHours(13);
+        document.write("<h2>월/일/시간만 변경 후 출력</h2>");
+        document.write(
+            (date.getYear()+1900)+"년 "+
+            (date.getMonth()+1)+"월 "+
+            date.getDate()+"일<br> ");
+        document.write("<h2>요일얻기</h2>");
+        switch(date.getDay()){
+            case 0: document.write("일요일"); break;
+            case 1: document.write("월요일"); break;
+            case 2: document.write("화요일"); break;
+            case 3: document.write("수요일"); break;
+            case 4: document.write("목요일"); break;
+            case 5: document.write("금요일"); break;
+            case 6: document.write("일요일"); break;   
+        }
+        var startDate = new Date(2020, 11 , 25);
+        var endDate = new Date();
+        var diff = startDate.getTime() - endDate.getTime();
+
+        document.write("<h2>크리스마스까지의 남은 일수는?</h2>");
+        document.write(diff/(1000*60*60*24)+"일");
+    </script>
+</body>
+</html>

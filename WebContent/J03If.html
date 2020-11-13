@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var nullvar = null, num1 = num2 =  10;
+        if(num1-num2){
+            document.write("num1-num2는 참이다. <br>");
+        }
+        else{
+            document.write("num1-num2는 거짓이다.<br>");
+        }
+
+        num1 > num2 ?
+            document.write(num1+"이 "+num2+"보다 크다<br>")
+            :
+            document.write(num1+"이 "+num2+"보다 크지않다<br>");
+        var result = num1 > num2 ?
+        num1+"이 "+num2+"보다 크다<br>"
+        :
+        num1+"이 "+num2+"보다 크지않다<br>";
+        document.write(result);
+
+        function getGrade(){
+            var kor = parseInt(document.getElementById("kor").value);
+            var eng = parseInt(document.getElementById("eng").value);
+            var math = parseInt(document.getElementById("math").value);
+            var avg = (kor+eng+math) / 3;
+
+            var strGrade="";
+            if(avg>90) strGrade="A학점";
+            else if(avg>80) strGrade="B학점";
+            else if(avg>70) strGrade="C학점";
+            else if(avg>60) strGrade="D학점";
+            else strGrade="<del>F학점</del>";
+            document.getElementById("gradePrint").innerHTML = strGrade;
+        }
+    </script>
+</head>
+<body>
+    <h2>if문을 이용한 학점 출력하기</h2>	
+	<table border="1">
+		<tr>
+			<td>국어</td>
+			<td><input type="text" id="kor"/></td>
+		</tr>
+		<tr>
+			<td>영어</td>
+			<td><input type="text" id="eng"/></td>
+		</tr>
+		<tr>
+			<td>수학</td>
+			<td><input type="text" id="math"/></td>
+		</tr>
+		<tr>
+			<td>학점</td>
+			<td id="gradePrint">학점은 요기에@.@</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="text-align:center;">
+				<button type="button" onclick="getGrade();">학점계산하기</button>
+			</td>
+		</tr>
+	</table>
+
+</body>
+</html>
