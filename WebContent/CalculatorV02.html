@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            text-align: center;
+            font-size: 16pt;
+            color:white;
+            font-weight: bold;       
+        } 
+        table {
+            border-spacing: 6px;
+        }
+        table td{     
+            width: 100px;
+            height: 50px;
+            border-radius: 13px 13px 13px 13px;      
+        }
+        td > button {
+            
+            width: 100%;
+            height: 100%;
+            border-radius: 15px 15px 15px 15px;
+            background-color:inherit;
+        }
+        .gray{
+            background-color: #7B7B7B;
+        }
+        .black{
+            background-color: #373737;
+        }
+        .yellow{
+            background-color: #FA960A;
+        }
+        .lcd{
+            height: 80px;
+            background-color: #70C738; 
+            color:#373737; 
+            font-size: 28pt;
+            text-align: right;
+            padding-right: 10px;
+        }
+        
+    </style>
+    <script>
+        
+        var lastvalue;
+        var cnt1=0,cnt2=0;
+        var operator = new Array();
+        var number = new Array();
+        var str2 = '';
+
+        function calculate(value){
+            var str1 = document.getElementById("LCD").innerHTML;
+            if(value=='='){
+                for(var i=0;i<operator.length;i++){
+                  str2 += number[i]+operator[i];
+                }
+                str2+=str1;
+                document.getElementById("LCD").innerHTML = eval(str2);
+                cnt1=cnt2=0;
+                str2='';
+                operator = new Array();
+                number = new Array();
+            }
+            else if(value=='back'){
+                if(lastvalue=='num')
+                document.getElementById("LCD").innerHTML = str1.substring(0,str1.length-1);
+            }
+            else if(value=='C'){
+                document.getElementById("LCD").innerHTML = '';
+            }
+            else if(value=='+'||value=='*'||value=='-'||value=='/'){
+                if(lastvalue=='num'){
+                    operator[cnt2++]=value;
+                }
+                lastvalue='op';
+            }
+            else{
+                if(lastvalue=='num'){
+                    document.getElementById("LCD").innerHTML = str1+value;
+                }
+                else if(lastvalue=='op'){
+                    number[cnt1++]=str1;
+                    document.getElementById("LCD").innerHTML = value;
+                }
+                else{
+                    document.getElementById("LCD").innerHTML = value;
+                }
+                lastvalue='num';
+            }
+        }
+    </script>
+</head>
+<body>
+    <table style="background-color: #DDDDDD; ">
+        <tr >
+            <td colspan="4" class="lcd" id="LCD"></td>
+        </tr>
+            
+        <tr class="gray">
+            <td colspan="2"><button onclick="calculate('back');">BackSpace</button></td>
+            <td colspan="2"><button onclick="calculate('C');">C</button></td>
+        </tr>
+        <tr class="black">
+            <td ><button onclick="calculate('1');">1</button></td>
+            <td ><button onclick="calculate('2');">2</button></td>
+            <td ><button onclick="calculate('3');">3</button></td>
+            <td class="yellow"><button onclick="calculate('/');">/</button></td>
+        </tr>
+        <tr class="black">
+            <td ><button onclick="calculate('4');">4</button></td>
+            <td ><button onclick="calculate('5');">5</button></td>
+            <td ><button onclick="calculate('6');">6</button></td>
+            <td class="yellow"><button onclick="calculate('*');">x</button></td>
+        </tr>
+        <tr class="black">
+            <td ><button onclick="calculate('7');">7</button></td>
+            <td ><button onclick="calculate('8');">8</button></td>
+            <td ><button onclick="calculate('9');">9</button></td>
+            <td class="yellow"><button onclick="calculate('+');">+</button></td>
+        </tr>
+        <tr class="black">
+            <td ><button onclick="calculate('=');">=</button></td>
+            <td ><button onclick="calculate('0');">0</button></td>
+            <td ><button onclick="calculate('.');">.</button></td>
+            <td class="yellow"><button onclick="calculate('-');">-</button></td>
+        </tr>
+    </table>
+</body>
+</html>

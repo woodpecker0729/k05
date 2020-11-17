@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function choiceOne(flag){
+            var f = document.choiceFrm;
+            if(flag==1){
+                for(var i=0;i<f.t1.length;i++){
+                    f.t1[i].disabled = true;
+                }
+                for(var i=0;i<f.s1.length;i++){
+                    f.s1[i].disabled = false;
+                }
+            }
+            else if(flag==2){
+                for(var i=0;i<f.s1.length;i++){
+                    f.s1[i].disabled = true;
+                }
+                for(var i=0;i<f.t1.length;i++){
+                    f.t1[i].disabled = false;
+                }
+            }
+        }
+        function spoChoice(){
+            var fn =document.choiceFrm;
+
+            var chkNum =0;
+            for(var i=0;i<fn.s1.length;i++){
+                if(fn.s1[i].checked==true) chkNum++;
+            }
+            if(chkNum>=2){
+                for(var i=0;i<fn.s1.length;i++){
+                    if(fn.s1[i].checked==false){
+                        fn.s1[i].disabled = true;
+                    }
+                }
+            }
+            else{
+                for(var i=0;i<fn.s1.length;i++){
+                        fn.s1[i].disabled = false;
+                }
+            }
+        }
+        function subChoice(){
+            var fn =document.choiceFrm;
+
+            var chkNum =0;
+            for(var i=0;i<fn.t1.length;i++){
+                if(fn.t1[i].checked==true) chkNum++;
+            }
+            if(chkNum>=3){
+                for(var i=0;i<fn.t1.length;i++){
+                    if(fn.t1[i].checked==false){
+                        fn.t1[i].disabled = true;
+                    }
+                }
+            }
+            else{
+                for(var i=0;i<fn.t1.length;i++){
+                        fn.t1[i].disabled = false;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>radio / checkbox 응용하기</h2>
+    <form name="choiceFrm">
+        <fieldset>
+            <legend>You 운동 or 공부?</legend>
+            <label><input type="radio" name="rad" value="1" onclick="choiceOne(this.value);">운동</label>
+            <input type="radio" name="rad" value="2" id="rad_2" onclick="choiceOne(this.value);">
+            <label for="rad_2">공부</label>
+        </fieldset>
+        <fieldset>
+            <legend>좋아하는운동2개선택</legend>
+            <input type="checkbox" name="s1" onclick="spoChoice();">야구
+            <input type="checkbox" name="s1" onclick="spoChoice();">농구
+            <input type="checkbox" name="s1" onclick="spoChoice();">축구
+            <input type="checkbox" name="s1" onclick="spoChoice();">배구
+            <input type="checkbox" name="s1" onclick="spoChoice();">핸드볼
+            <input type="checkbox" name="s1" onclick="spoChoice();">테니스
+        </fieldset>
+        <fieldset>
+            <legend>좋아하는과목3개선택</legend>
+            <input type="checkbox" name="t1" onclick="subChoice();">국어
+            <input type="checkbox" name="t1" onclick="subChoice();">영어
+            <input type="checkbox" name="t1" onclick="subChoice();">수학
+            <input type="checkbox" name="t1" onclick="subChoice();">역사
+            <input type="checkbox" name="t1" onclick="subChoice();">화학
+            <input type="checkbox" name="t1" onclick="subChoice();">전산
+        </fieldset>
+    </form>
+</body>
+</html>

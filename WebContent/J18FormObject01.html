@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function formValidate(){
+            var frm =document.forms[0];
+            if(frm.id.value==""){
+                alert("아이디를 입력해주세요");
+                frm.id.focus();
+                return false;
+            }
+            if(!frm.pw.value){
+                alert("패스워드를 입력해주세요");
+                frm.pw.focus();
+                return false;
+            }
+        }
+        function jsSubmit(){
+            var f = document.loginFrm2;
+            if(f.id.value==''){
+                alert("아이디를 입력해주세요");
+                frm.id.focus();
+                return;
+            }
+            if(f.pw.value==""){
+                alert("패스워드를 입력해주세요");
+                frm.pw.focus();
+                return;
+            }
+            f.action ="";
+            f.method ="get";
+            f.submit();
+        }
+    </script>
+</head>
+<body>
+    <h2>form전송방식 - HTML을 사용하는 방법</h2>
+    <form name="loginFrm1" method="get" onsubmit="return formValidate();">
+        아이디 : <input type="text" name="id" > <br>
+        패스워드 ; <input type="password" name="pw" > <br>
+        <input type="submit" value="로그인">
+    </form>
+    
+    <h2>form전송방식 -Javascript를 사용하는 방법</h2>
+    <form action="adcd.html" name="loginFrm2" method="post">
+        아이디 : <input type="text" name="id" > <br>
+        패스워드 ; <input type="password" name="pw" > <br>
+        <input type="button" value="로그인" onclick="jsSubmit();">
+    </form>
+</body>
+</html>
