@@ -4,6 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>        
+        input[type='checkbox']:disabled::after{
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            top: -2px;
+            left: -1px;
+            position: relative;
+            background-color: #d1d3d1;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 2px solid white;
+        }
+    </style>
+
     <script>
         function choiceOne(flag){
             var f = document.choiceFrm;

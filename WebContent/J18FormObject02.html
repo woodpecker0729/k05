@@ -9,7 +9,8 @@
 
         function allChecked(){
             for(var i=0;i<chkArr.length;i++){
-                chkArr[i].checked = 'checked';
+                // chkArr[i].checked = 'checked';
+                chkArr[i].checked = true;
             }
         }
         function allUnChecked(){
@@ -32,7 +33,7 @@
 <body>
     <h2>checkbox 전체선택/해제/반전하기</h2>
     <fieldset>
-        <legend>좋아하는 운동 2가지 선택</legend>
+        <legend>좋아하는 운동 선택</legend>
         <input type="checkbox" name="spo" value="야구">야구
         <input type="checkbox" name="spo" value="농구">농구
         <input type="checkbox" name="spo" value="축구">축구
